@@ -59,7 +59,7 @@ targetRunner = function (experiment, scenario) {
   return(list(cost=runif(n=1, min=100, max=2000)))
 
   # Target algorithm executable   
-  exe = "../ACOTSP-1.03/acotsp"
+  exe = "ACOTSP-1.03/acotsp"
 
   # Extracting experiment information  
   candidate_id  = experiment$id.configuration
