@@ -15,7 +15,7 @@ forbiddenFile = "forbidden.txt"
 
 
 ## Directory where the programs will be run.
-execDir = "./arena"
+execDir = "."
 
 
 
