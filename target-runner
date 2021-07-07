@@ -23,7 +23,7 @@ error() {
 }
 
 # Path to the ACOTSP software:
-EXE=../ACOTSP-1.03/acotsp
+EXE=ACOTSP-1.03/acotsp
 
 
 # Read experiment information
