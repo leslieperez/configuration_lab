@@ -14,7 +14,8 @@
 ###############################################################################
 
 # Comment this line to execute acotsp!
-return $RANDOM
+echo "$RANDOM"
+exit 0
 
 error() {
     echo "`TZ=UTC date`: $0: error: $@" >&2
