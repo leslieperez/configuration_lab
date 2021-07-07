@@ -1,4 +1,4 @@
-# configuration_lab
+# Automatic algorithm configuration with irace lab
 
 This repository contains the an example of a configuration scenario setup for irace.
 
@@ -82,7 +82,7 @@ ln -s /home/runner/R/x86_64-pc-linux-gnu-library/3.4/irace/bin/irace .
 ./irace --scenario scenario.txt
 ```
 
-### Enable the benchmark
+## Enable the benchmark
 Note that to make the execution quicker for initial setup, the target runner is not executing ACOTSP in the target runner procedures. To enable its execution, you must comment the lines in the target runner your are using.
 
 In scenario file, comment or remove the line:
