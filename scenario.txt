@@ -21,11 +21,11 @@ execDir = "./arena"
 
 ## Directory where tuning instances are located, either absolute path or
 ## relative to current directory.
-trainInstancesDir = "../instances/small/training/"
+trainInstancesDir = "instances/small/training/"
 
 
 ## Set testing data 
-testInstancesDir = "../instances/small/testing/"
+testInstancesDir = "instances/small/testing/"
 testNumElites = 5
 
 
