@@ -1,0 +1,103 @@
+###################################################### -*- mode: r -*- #####
+## Scenario setup for Iterated Race (iRace).
+############################################################################
+
+## To use the default value of a parameter of iRace, simply do not set
+## the parameter (comment it out in this file, and do not give any
+## value on the command line).
+
+
+## File that contains the description of the parameters.
+parameterFile = "parameters.txt"
+configurationsFile = "default.txt"
+forbiddenFile = "forbidden.txt"
+
+
+
+## Directory where the programs will be run.
+execDir = "."
+
+
+
+## Directory where tuning instances are located, either absolute path or
+## relative to current directory.
+trainInstancesDir = "instances/small/training/"
+
+
+## Set testing data 
+testInstancesDir = "instances/small/testing/"
+testNumElites = 5
+
+
+
+## The maximum number of runs (invocations of targetRunner) that will performed. It
+## determines the (maximum) budget of experiments for the tuning.
+maxExperiments = 300
+
+
+
+## Number of CPU cores to use
+parallel = 3
+
+
+
+## A value of 0 silences all debug messages. Higher values provide
+## more verbose debug messages.
+# debugLevel = 0
+
+
+
+## Target runner
+## Bash script that executes the target algorithm
+##targetRunner = "./target-runner"
+
+## R function that executes the target algorithm
+targetRunner = function (experiment, scenario) {
+  suppressMessages(require("stringr"))
+
+  #comment this line to execute acotsp!
+  return(list(cost=runif(n=1, min=100, max=2000)))
+
+  # Target algorithm executable   
+  exe = "-jar ACOTSPJava/ACOTSPJava.jar"  
+
+  # Extracting experiment information  
+  candidate_id  = experiment$id.configuration
+  instance_id   = experiment$id.instance
+  seed          = experiment$seed 
+  instance_name = experiment$instance
+  
+  # Define fixed parameters (budget or other options)
+  fixed_params = "--tries 1 --time 0 --tours 1000 --quiet"
+
+  # Create parameter arguments for command line
+  parameters    = buildCommandLine(experiment$configuration, experiment$switches)
+
+
+  # Create command line
+  command_line = paste (exe, fixed_params, "-i", instance_name,"--seed", seed, parameters, sep=" ")
+
+  # Execute command
+  output = system2(command="java", args=command_line, stdout=TRUE, stderr=TRUE)
+
+  # Check if error!    
+  if (!is.null(attr(output, "status"))) {
+    cat ("\nError executing: ", exe, command_line, "\n")
+    cat (output, "\n\n")
+    stop()
+  }
+
+  # Parse output 
+  sel = which(sapply(output, grep, pattern="Best tour:", ignore.case = FALSE, value=FALSE) == 1)
+  result = as.numeric(output[sel+1])
+   
+  # Return result 
+  # Result should be a list with elements cost and time (optional)
+  return(list(cost=result))
+
+}
+
+
+## END of scenario file
+############################################################################
+

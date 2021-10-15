@@ -1,0 +1,37 @@
+Parameter-settings: 
+
+
+max_tries		 1
+max_tours		 0
+max_time		 10.0
+Utilities.seed		 -2117799471
+optimum			 1
+n_ants			 50
+Ants.nn_ants		 20
+Ants.alpha		 1.0
+Ants.beta		 2.0
+Ants.rho		 0.5
+Ants.q_0		 0.0
+Ants.elitist_ants	 0
+Ants.ras_ranks		 0
+LocalSearch.ls_flag	 3
+LocalSearch.nn_ls	 20
+LocalSearch.dlb_flag	 true
+Ants.as_flag		 true
+Ants.eAnts.as_flag	 false
+rAnts.as_flag		 false
+mmAnts.as_flag		 false
+Ants.bwAnts.as_flag	 false
+Ants.acs_flag		 false
+
+
+Best: 27931	 Iterations: 34	 B-Fac 1.994360902255639	 Time 3.046	 Tot.time 10.002
+
+Average-Best: 27931.0	 Average-Iterations: 34.0
+Stddev-Best: 0.0 	 Stddev Iterations: 0.0
+Best try: 27931		 Worst try: 27931
+
+Avg.time-best: 3.046 stddev.time-best: 0.0
+
+Avg.time-Ants.total: 10.003 stddev.time-Ants.total: 0.0
+ excess best = 27930.0, excess average = 27930.0, excess worst = 27930.0
