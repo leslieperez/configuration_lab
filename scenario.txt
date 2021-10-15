@@ -68,7 +68,7 @@ targetRunner = function (experiment, scenario) {
   instance_name = experiment$instance
   
   # Define fixed parameters (budget or other options)
-  fixed_params = "--tries 1 --time 5 --quiet"
+  fixed_params = "--tries 1 --time 0 --tours 1000 --quiet"
 
   # Create parameter arguments for command line
   parameters    = buildCommandLine(experiment$configuration, experiment$switches)
