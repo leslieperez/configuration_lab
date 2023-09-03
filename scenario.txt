@@ -49,53 +49,53 @@ parallel = 3
 
 ## Target runner
 ## Bash script that executes the target algorithm
-##targetRunner = "./target-runner"
+targetRunner = "./target-runner"
 
 ## R function that executes the target algorithm
-targetRunner = function (experiment, scenario) {
-  suppressMessages(require("stringr"))
-
-  #comment this line to execute acotsp!
-  #return(list(cost=runif(n=1, min=100, max=2000)))
-
-  # Target algorithm executable   
-  exe = "ACOTSP-1.03/acotsp"
-
-  # Extracting experiment information  
-  candidate_id  = experiment$id.configuration
-  instance_id   = experiment$id.instance
-  seed          = experiment$seed 
-  instance_name = experiment$instance
-  
-  # Define fixed parameters (budget or other options)
-  fixed_params = "--tries 1 --time 0 --tours 1000 --quiet"
-
-  # Create parameter arguments for command line
-  parameters    = buildCommandLine(experiment$configuration, experiment$switches)
-
-
-  # Create command line
-  command_line = paste (fixed_params, "-i", instance_name,"--seed", seed, parameters, sep=" ")
-
-  # Execute command
-  output = system2(command=exe, args=command_line, stdout=TRUE, stderr=TRUE)
-
-  # Check if error!    
-  if (!is.null(attr(output, "status"))) {
-    cat ("\nError executing: ", exe, command_line, "\n")
-    cat (output, "\n\n")
-    stop()
-  }
-
-  # Parse output 
-  sel = which(sapply(output, grep, pattern="try 0, Best", ignore.case = FALSE, value=FALSE) == 1)
-  result = as.numeric(str_split(str_trim(str_split(output[sel],"," )[[1]][2]), "\\s")[[1]][2])
-   
-  # Return result 
-  # Result should be a list with elements cost and time (optional)
-  return(list(cost=result))
-
-}
+##targetRunner = function (experiment, scenario) {
+##  suppressMessages(require("stringr"))
+##
+##  #comment this line to execute acotsp!
+##  #return(list(cost=runif(n=1, min=100, max=2000)))
+##
+##  # Target algorithm executable   
+##  exe = "ACOTSP-1.03/acotsp"
+##
+##  # Extracting experiment information  
+##  candidate_id  = experiment$id.configuration
+##  instance_id   = experiment$id.instance
+##  seed          = experiment$seed 
+##  instance_name = experiment$instance
+##  
+##  # Define fixed parameters (budget or other options)
+##  fixed_params = "--tries 1 --time 0 --tours 1000 --quiet"
+##
+##  # Create parameter arguments for command line
+##  parameters    = buildCommandLine(experiment$configuration, experiment$switches)
+##
+##
+##  # Create command line
+##  command_line = paste (fixed_params, "-i", instance_name,"--seed", seed, parameters, sep=" ")
+##
+##  # Execute command
+##  output = system2(command=exe, args=command_line, stdout=TRUE, stderr=TRUE)
+##
+##  # Check if error!    
+##  if (!is.null(attr(output, "status"))) {
+##    cat ("\nError executing: ", exe, command_line, "\n")
+##    cat (output, "\n\n")
+##    stop()
+##  }
+##
+##  # Parse output 
+##  sel = which(sapply(output, grep, pattern="try 0, Best", ignore.case = FALSE, value=FALSE) == 1)
+##  result = as.numeric(str_split(str_trim(str_split(output[sel],"," )[[1]][2]), "\\s")[[1]][2])
+##   
+##  # Return result 
+##  # Result should be a list with elements cost and time (optional)
+##  return(list(cost=result))
+##
+##}
 
 
 ## END of scenario file
