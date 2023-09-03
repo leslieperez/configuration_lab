@@ -3,7 +3,7 @@ VERSION=1.03
 
 OPTIM_FLAGS=-O
 WARN_FLAGS=-Wall -ansi -pedantic
-CFLAGS=$(WARN_FLAGS) $(OPTIM_FLAGS)
+CFLAGS=$(WARN_FLAGS) $(OPTIM_FLAGS) -fcommon
 # To change the default timer implementation, uncomment the line below
 # or call 'make TIMER=unix'
 TIMER=dos

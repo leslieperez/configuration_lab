@@ -26,7 +26,7 @@ trainInstancesDir = "instances/small/training/"
 
 ## Set testing data 
 testInstancesDir = "instances/small/testing/"
-testNumElites = 5
+testNbElites = 5
 
 
 
@@ -56,7 +56,7 @@ targetRunner = function (experiment, scenario) {
   suppressMessages(require("stringr"))
 
   #comment this line to execute acotsp!
-  return(list(cost=runif(n=1, min=100, max=2000)))
+  #return(list(cost=runif(n=1, min=100, max=2000)))
 
   # Target algorithm executable   
   exe = "ACOTSP-1.03/acotsp"
