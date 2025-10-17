@@ -10,7 +10,6 @@
 ## File that contains the description of the parameters.
 parameterFile = "parameters.txt"
 configurationsFile = "default.txt"
-forbiddenFile = "forbidden.txt"
 
 
 
@@ -100,4 +99,5 @@ targetRunner = "./target-runner"
 
 ## END of scenario file
 ############################################################################
+
 
