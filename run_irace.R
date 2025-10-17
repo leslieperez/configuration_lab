@@ -1,8 +1,6 @@
 library("irace")
 
 
-parameters <- readParameters("parameters.txt")
 scenario <- readScenario("scenario.txt")
-irace(scenario=scenario, parameters=parameters)
+irace_main(scenario=scenario)
 
-testing.main(logFile="irace.Rdata")
