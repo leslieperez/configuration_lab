@@ -15,4 +15,4 @@ elitistants     "--elitistants "     i  	(1, 750) 		| algorithm == "eas"
 
 [forbidden]
 ## Examples of valid logical operators are: ==  !=  >=  <=  >  <  &  |  !  %in%
-(alpha > 2.0) && (beta > 3.0)
+(alpha > 2.0) & (beta > 3.0)
