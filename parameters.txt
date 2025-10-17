@@ -12,3 +12,7 @@ rasrank         "--rasranks "        i  	(1, 100) 		| algorithm == "ras"
 elitistants     "--elitistants "     i  	(1, 750) 		| algorithm == "eas"
 #nnls            "--nnls "            i  	(5, 50)			| localsearch %in% c(1, 2, 3)
 #dlb             "--dlb "             c  	(0, 1) 			| localsearch %in% c(1,2,3)
+
+[forbidden]
+## Examples of valid logical operators are: ==  !=  >=  <=  >  <  &  |  !  %in%
+(alpha > 2.0) && (beta > 3.0)
